@@ -24,6 +24,7 @@
 			// --- 创建要添加的 html 代码变量 ---
 			var html = '';
 			var allPage = parseInt(count / page);
+			if(allPage < 1) allPage = 1;
 			var toPage = ((current + 4) >= allPage) ? allPage : current + 4;
 			var fromPage = ((current - 4) <= 1) ? 1 : current - 4;
 			// --- 开始组建 ---
