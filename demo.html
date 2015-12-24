@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Demo page</title>
+		<script src="jquery-2.1.4.min.js"></script>
+		<script src="jquery.page-control-0.1.min.js"></script>
+		<script>
+			$(document).ready(function(e) {
+			    $('#pageControl').pageControl(500, 10, 45);
+			});
+		</script>
+	</head>
+	<body>
+		<div id="pageControl"><span> {p} </span><span onClick="$('#pageControl').pageControl(500, 10, {p});">[{p}]</span><span> ... </span></div>
+	</body>
+</html>
