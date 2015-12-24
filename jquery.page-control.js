@@ -23,8 +23,11 @@
 			}
 			// --- 创建要添加的 html 代码变量 ---
 			var html = '';
-			var allPage = parseInt(count / page);
+			var allPage = count / page;
+			// --- 不足 1 则页面内容小于 1 页所能承载的，fix bug ---
 			if(allPage < 1) allPage = 1;
+			// --- 也有可能最后一页不满一页，那也要计算啊，fix bug ---
+			else if(allPage.toString().indexOf('.') != -1) allPage = parseInt(allPage) + 1;
 			var toPage = ((current + 4) >= allPage) ? allPage : current + 4;
 			var fromPage = ((current - 4) <= 1) ? 1 : current - 4;
 			// --- 开始组建 ---
