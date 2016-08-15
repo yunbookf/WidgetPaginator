@@ -24,6 +24,7 @@ class WidgetPaginator {
     set current(val: number) {
         if (val !== this._current) {
             this._current = val;
+            this.onChange(val);
             this.render();
         }
     }
@@ -38,6 +39,12 @@ class WidgetPaginator {
             this._count = val;
             this.render();
         }
+    }
+
+    // --- 总共页数 READONLY ---
+    private _pages: number;
+    get pages(): number {
+        return this._pages;
     }
 
     // --- 模板 ---
@@ -92,6 +99,8 @@ class WidgetPaginator {
         if (allPage < 1) allPage = 1;
 		// --- 也有可能最后一页不满一页，那也要计算啊，fix bug ---
         else if (allPage.toString().indexOf(".") !== -1) ++allPage;
+        // --- 将全部页导入只读属性 ---
+        this._pages = allPage;
         let toPage: number = ((this._current + 4) >= allPage) ? allPage : this._current + 4;
         let fromPage: number = ((this._current - 4) <= 1) ? 1 : this._current - 4;
         // --- 开始组建 ---
@@ -119,6 +128,9 @@ class WidgetPaginator {
             this.current = parseInt($(e.currentTarget).attr("page"));
         }).bind(this));
     }
+
+    // --- 事件 ---
+    public onChange: (page?: number) => void = function(){};
 
 }
 

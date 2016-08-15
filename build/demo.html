@@ -5,6 +5,7 @@
 		<title>WidgetPaginator Demo</title>
 		<style>
 			#pageControl{margin-top: 50px;}
+			#tip{text-align: center; margin-top: 20px;}
 			.widgetPaginator{text-align: center; -webkit-user-select: none; -moz-user-select: none;}
 			.widgetPaginator > span{display: inline-block; padding: 5px 10px; border: 1px solid transparent; margin: 0 5px;}
 			.widgetPaginator > .normal{border-color: #666; cursor: pointer;}
@@ -15,11 +16,16 @@
 		<script src="paginator.js"></script>
 		<script>
 			$(document).ready(function(e) {
-			    var p = new WidgetPaginator("#pageControl");
+			    var wp = new WidgetPaginator("#pageControl");
+				wp.onChange = function(p) {
+					$("#tip").html("当前第"+p+"页，共"+wp.pages+"页");
+				};
+				$("#tip").html($("#tip").html().replace(/{{wp.pages}}/g, wp.pages));
 			});
 		</script>
 	</head>
 	<body>
 		<div id="pageControl"></div>
+		<div id="tip">当前第1页，共{{wp.pages}}页</div>
 	</body>
 </html>

@@ -20,6 +20,22 @@ wp.total = 200;
 
 且其他条件不变的情况下，那么，UI组件会自动更新为当总条数为 200 时的样子。
 
+## 如何监听页面被切换了
+
+很简单，重写 onChange 事件就可以检测到用户是否切换了页面。
+
+```typescript
+wp.onChange = function(page: number) {
+    alert("您点击了第 " + page.toString() + " 页。");
+};
+```
+
+若您使用代码如下设置也是会触发 onChage 事件的：
+
+```typescript
+wp.current = 6;
+```
+
 ## 浏览器兼容
 我们仅兼容现代浏览器，正如我们在演示的时候使用了 jQuery 3.1.0 一样。
 

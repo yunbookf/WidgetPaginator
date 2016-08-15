@@ -8,6 +8,7 @@ var WidgetPaginator = (function () {
             normal: "<span class=\"normal\" page=\"{p}\">{p}</span>",
             omit: "<span class=\"omit\">...</span>"
         };
+        this.onChange = function () { };
         var dom = $(d);
         dom.addClass("widgetPaginator");
         this.dom = dom;
@@ -33,6 +34,7 @@ var WidgetPaginator = (function () {
         set: function (val) {
             if (val !== this._current) {
                 this._current = val;
+                this.onChange(val);
                 this.render();
             }
         },
@@ -48,6 +50,13 @@ var WidgetPaginator = (function () {
                 this._count = val;
                 this.render();
             }
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(WidgetPaginator.prototype, "pages", {
+        get: function () {
+            return this._pages;
         },
         enumerable: true,
         configurable: true
@@ -90,6 +99,7 @@ var WidgetPaginator = (function () {
             allPage = 1;
         else if (allPage.toString().indexOf(".") !== -1)
             ++allPage;
+        this._pages = allPage;
         var toPage = ((this._current + 4) >= allPage) ? allPage : this._current + 4;
         var fromPage = ((this._current - 4) <= 1) ? 1 : this._current - 4;
         if (this._current >= 7)
