@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>WidgetPaginator Demo</title>
+		<style>
+			#pageControl{margin-top: 50px;}
+			.widgetPaginator{text-align: center; -webkit-user-select: none; -moz-user-select: none;}
+			.widgetPaginator > span{display: inline-block; padding: 5px 10px; border: 1px solid transparent; margin: 0 5px;}
+			.widgetPaginator > .normal{border-color: #666; cursor: pointer;}
+			.widgetPaginator > .normal:hover{border-color: #333; background-color: #eee;}
+			.widgetPaginator > .normal:active{background-color: #333; color: #FFF;}
+		</style>
+		<script src="../jquery-3.1.0.min.js"></script>
+		<script src="paginator.js"></script>
+		<script>
+			$(document).ready(function(e) {
+			    var p = new WidgetPaginator("#pageControl");
+			});
+		</script>
+	</head>
+	<body>
+		<div id="pageControl"></div>
+	</body>
+</html>
