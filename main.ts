@@ -1,16 +1,13 @@
-// import { paginator } from "widget";
-
-import Paginator = require("Paginator");
 
 $(document).ready(function(e) {
 
-    let wp: Paginator = new Paginator(".pageControl:eq(0)");
+    let wp: WidgetPaginator = new WidgetPaginator(".pageControl:eq(0)");
     wp.onChange = function(p) {
         $(".tip:eq(0)").html("当前第" + p + "页，共" + wp.pages + "页");
     };
     $(".tip:eq(0)").html($(".tip:eq(0)").html().replace(/{{wp.pages}}/g, wp.pages.toString()));
     // --- WIN 10 ---
-    let wp2: Paginator = new Paginator(".pageControl:eq(1)", {
+    let wp2: WidgetPaginator = new WidgetPaginator(".pageControl:eq(1)", {
         total: 142,
         current: 3
     });
