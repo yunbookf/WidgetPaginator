@@ -8,7 +8,6 @@ var WidgetPaginator = (function () {
             normal: "<span class=\"normal\" page=\"{p}\">{p}</span>",
             omit: "<span class=\"omit\">...</span>"
         };
-        this.onChange = function () { };
         var dom = $(d);
         dom.addClass("widgetPaginator");
         this.dom = dom;
@@ -97,8 +96,9 @@ var WidgetPaginator = (function () {
         var allPage = this._total / this._count;
         if (allPage < 1)
             allPage = 1;
-        else if (allPage.toString().indexOf(".") !== -1)
-            ++allPage;
+        else if (allPage.toString().indexOf(".") !== -1) {
+            allPage = Math.ceil(allPage);
+        }
         this._pages = allPage;
         var toPage = ((this._current + 4) >= allPage) ? allPage : this._current + 4;
         var fromPage = ((this._current - 4) <= 1) ? 1 : this._current - 4;
@@ -121,6 +121,9 @@ var WidgetPaginator = (function () {
             this.current = parseInt($(e.currentTarget).attr("page"));
         }).bind(this));
     };
+    WidgetPaginator.prototype.onChange = function (page) { };
+    ;
+    WidgetPaginator.verison = "1.0";
     return WidgetPaginator;
 }());
-//# sourceMappingURL=paginator.js.map
+//# sourceMappingURL=Paginator.js.map

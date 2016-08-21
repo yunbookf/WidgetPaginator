@@ -1,0 +1,13 @@
+.pageControl{margin-top: 50px;}
+
+.tip{text-align: center; margin-top: 20px;}
+
+.widgetPaginator{text-align: center; -webkit-user-select: none; -moz-user-select: none;}
+.widgetPaginator > span{display: inline-block; padding: 5px 10px; border: 1px solid transparent; margin: 0 5px;}
+.widgetPaginator > .normal{border-color: #666; cursor: pointer;}
+.widgetPaginator > .normal:hover{border-color: #333; background-color: #eee;}
+.widgetPaginator > .normal:active{background-color: #333; color: #FFF;}
+
+.widgetPaginator.win10 > .normal{background-color: #e1e1e1; border-color: #afafaf;}
+.widgetPaginator.win10 > .normal:hover{background-color: #e5f1fb; border-color: #0078d7;}
+.widgetPaginator.win10 > .normal:active{background-color: #cde5f7; border-color: #005499; color: #000;}

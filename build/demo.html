@@ -3,29 +3,15 @@
 	<head>
 		<meta charset="utf-8">
 		<title>WidgetPaginator Demo</title>
-		<style>
-			#pageControl{margin-top: 50px;}
-			#tip{text-align: center; margin-top: 20px;}
-			.widgetPaginator{text-align: center; -webkit-user-select: none; -moz-user-select: none;}
-			.widgetPaginator > span{display: inline-block; padding: 5px 10px; border: 1px solid transparent; margin: 0 5px;}
-			.widgetPaginator > .normal{border-color: #666; cursor: pointer;}
-			.widgetPaginator > .normal:hover{border-color: #333; background-color: #eee;}
-			.widgetPaginator > .normal:active{background-color: #333; color: #FFF;}
-		</style>
-		<script src="../jquery-3.1.0.min.js"></script>
+		<link rel="stylesheet" href="main.css">
+		<script src="jquery-3.1.0.min.js"></script>
 		<script src="paginator.js"></script>
-		<script>
-			$(document).ready(function(e) {
-			    var wp = new WidgetPaginator("#pageControl");
-				wp.onChange = function(p) {
-					$("#tip").html("当前第"+p+"页，共"+wp.pages+"页");
-				};
-				$("#tip").html($("#tip").html().replace(/{{wp.pages}}/g, wp.pages));
-			});
-		</script>
+		<script src="main.js"></script>
 	</head>
 	<body>
-		<div id="pageControl"></div>
-		<div id="tip">当前第1页，共{{wp.pages}}页</div>
+		<div class="pageControl"></div>
+		<div class="tip">当前第1页，共{{wp.pages}}页</div>
+		<div class="pageControl win10"></div>
+		<div class="tip">Win 10 风格，共{{wp2.total}}条，共{{wp2.pages}}页</div>
 	</body>
 </html>

@@ -1,8 +1,7 @@
-/// <reference path="./paginator.d.ts"/>
-
 class WidgetPaginator {
 
     public dom: JQuery;
+    public static verison: string = "1.0";
 
     // --- 总条数 ---
     private _total: number = 500;
@@ -75,7 +74,7 @@ class WidgetPaginator {
     }
 
     // --- 批量设置 Opts 统一渲染 ---
-    public setOpts(opts: WidgetPaginatorOptions) {
+    public setOpts(opts: WidgetPaginatorOptions): void {
         if (opts) {
             for (let key in opts) {
                 if (key === "html") {
@@ -92,13 +91,15 @@ class WidgetPaginator {
     }
 
     // --- 重新渲染 ---
-    public render(): void {
+    private render(): void {
         let html: string = "";
         let allPage: number = this._total / this._count;
 		// --- 不足 1 则页面内容小于 1 页所能承载的，fix bug ---
         if (allPage < 1) allPage = 1;
 		// --- 也有可能最后一页不满一页，那也要计算啊，fix bug ---
-        else if (allPage.toString().indexOf(".") !== -1) ++allPage;
+        else if (allPage.toString().indexOf(".") !== -1) {
+            allPage = Math.ceil(allPage);
+        }
         // --- 将全部页导入只读属性 ---
         this._pages = allPage;
         let toPage: number = ((this._current + 4) >= allPage) ? allPage : this._current + 4;
@@ -130,7 +131,7 @@ class WidgetPaginator {
     }
 
     // --- 事件 ---
-    public onChange: (page?: number) => void = function(){};
+    public onChange(page?: number): void {};
 
 }
 
