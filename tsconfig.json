@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-        "module": "amd",
+        "module": "commonjs",
         "removeComments": true,
         "preserveConstEnums": true,
         "outDir": "./build/",

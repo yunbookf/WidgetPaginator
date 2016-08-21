@@ -126,4 +126,4 @@ var WidgetPaginator = (function () {
     WidgetPaginator.verison = "1.0";
     return WidgetPaginator;
 }());
-//# sourceMappingURL=Paginator.js.map
+//# sourceMappingURL=paginator.js.map
